@@ -5,10 +5,11 @@ export default function Home() {
   return (
 
     <>
-      <div className=" text-black bg-black  font-[family-name:var(--font-geist-sans)]">
+      <div style={{ backgroundColor: "black" }} className=" text-black bg-black  font-[family-name:var(--font-geist-sans)]">
 
 
         <div className="bg-black">
+          <h3>shafikul</h3>
 
           <FormVadation />
 

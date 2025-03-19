@@ -33,8 +33,8 @@ function FormVadation() {
   };
 
   return (
-    <div className="App min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      <div className="bg-white/50 text-black p-8 rounded-lg shadow-lg w-96">
         <h1 className="text-2xl font-semibold mb-6 text-center">Form with Validation</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -75,7 +75,7 @@ function FormVadation() {
           </div>
 
           <div>
-            <button type="submit" className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">
+            <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition duration-200">
               Submit
             </button>
           </div>
