@@ -1,6 +1,8 @@
 'use client'
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import * as z from "zod"
 
 function HookForm() {
     const onSubmit = (e) => {
@@ -14,7 +16,17 @@ function HookForm() {
         };
         console.log('Form Data:', formData);
     };
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const schema = z.object({
+        name: z.string().max(10, { message: "must be 10 characters" }),
+        email: z.string().email({ message: "Invalid email address" }),
+        password: z.string().min(10, { message: "Enter at least 10 characters" }),
+        creditCardNumber: z.string().length(16, { message: "Credit card number must be 16 digits" })
+    });
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(schema)
+    })
 
     const formData = (data) => {
         console.log(data)
@@ -32,6 +44,7 @@ function HookForm() {
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
 
                         />
+                        {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
                     </div>
 
                     <div>
@@ -40,6 +53,7 @@ function HookForm() {
                             {...register('email')}
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
+                        {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
                     </div>
 
                     <div>
@@ -48,6 +62,7 @@ function HookForm() {
                             {...register('password')}
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
+                        {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
                     </div>
 
                     <div>
@@ -56,6 +71,7 @@ function HookForm() {
                             {...register('creditCardNumber')}
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
+                        {errors.creditCardNumber && <p className='text-red-600'>{errors.creditCardNumber.message}</p>}
                     </div>
 
                     <div>
