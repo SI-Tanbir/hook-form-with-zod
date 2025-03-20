@@ -1,4 +1,5 @@
 import FormVadation from "@/components/fromValidation";
+import HookForm from "@/components/Hookfrom";
 
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
 
 
 
-        <FormVadation />
+        {/* <FormVadation /> */}
+        <HookForm />
 
 
       </div>
